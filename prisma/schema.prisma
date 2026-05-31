@@ -1,0 +1,266 @@
+// Rugab Dynamic Logistics — Prisma schema.
+//
+// Local dev runs on SQLite. To deploy on PostgreSQL, change `provider` below
+// to "postgresql" and point DATABASE_URL at your Postgres instance — the models
+// are written to be portable (string-typed enums, no DB-native enum types), so
+// no model changes are required.
+//
+// Enum-like fields are stored as String and validated in the application layer
+// (lib/constants.ts + Zod schemas). Allowed values are documented inline.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Users & profiles
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  phone        String?
+  passwordHash String
+  role         String   @default("CUSTOMER") // ADMIN | CUSTOMER | RIDER
+  status       String   @default("ACTIVE")   // ACTIVE | INACTIVE | SUSPENDED
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  customerProfile CustomerProfile?
+  riderProfile    RiderProfile?
+
+  quoteRequests   QuoteRequest[]    @relation("CustomerQuotes")
+  customerShipments Shipment[]      @relation("CustomerShipments")
+  riderShipments  Shipment[]        @relation("RiderShipments")
+  statusLogs      ShipmentStatusLog[]
+  proofs          ProofOfDelivery[]
+  confirmedPayments Payment[]       @relation("PaymentConfirmedBy")
+  auditLogs       AuditLog[]
+  notifications   Notification[]
+
+  @@index([role])
+  @@index([status])
+}
+
+model CustomerProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName String?
+  address     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model RiderProfile {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vehicleType        String?
+  vehiclePlateNumber String?
+  availabilityStatus String   @default("OFFLINE") // AVAILABLE | BUSY | OFFLINE | SUSPENDED
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+// ---------------------------------------------------------------------------
+// Quote requests
+// ---------------------------------------------------------------------------
+
+model QuoteRequest {
+  id                  String   @id @default(cuid())
+  trackingCode        String   @unique
+  customerId          String?
+  customer            User?    @relation("CustomerQuotes", fields: [customerId], references: [id], onDelete: SetNull)
+
+  fullName            String
+  email               String
+  phone               String
+  companyName         String?
+  shipmentType        String   // see SHIPMENT_TYPES in lib/constants.ts
+
+  pickupCountry       String?
+  pickupState         String?
+  pickupCity          String?
+  pickupAddress       String
+  destinationCountry  String?
+  destinationState    String?
+  destinationCity     String?
+  destinationAddress  String
+
+  packageDescription  String
+  packageWeight       Float?
+  packageDimensions   String?
+  quantity            Int?
+  preferredShippingDate DateTime?
+  additionalNotes     String?
+
+  status              String   @default("PENDING") // shipment status flow
+  estimatedPrice      Float?
+  adminNote           String?
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  shipment            Shipment?
+
+  @@index([trackingCode])
+  @@index([status])
+  @@index([customerId])
+  @@index([createdAt])
+  @@index([shipmentType])
+}
+
+// ---------------------------------------------------------------------------
+// Shipments
+// ---------------------------------------------------------------------------
+
+model Shipment {
+  id                  String   @id @default(cuid())
+  trackingCode        String   @unique
+  quoteRequestId      String?  @unique
+  quoteRequest        QuoteRequest? @relation(fields: [quoteRequestId], references: [id], onDelete: SetNull)
+  customerId          String?
+  customer            User?    @relation("CustomerShipments", fields: [customerId], references: [id], onDelete: SetNull)
+  riderId             String?
+  rider               User?    @relation("RiderShipments", fields: [riderId], references: [id], onDelete: SetNull)
+
+  shipmentType        String
+
+  pickupCountry       String?
+  pickupState         String?
+  pickupCity          String?
+  pickupAddress       String
+  destinationCountry  String?
+  destinationState    String?
+  destinationCity     String?
+  destinationAddress  String
+
+  receiverName        String?
+  receiverPhone       String?
+  packageDescription  String
+  packageWeight       Float?
+  deliveryFee         Float?
+
+  status              String   @default("APPROVED")  // shipment status flow
+  paymentStatus       String   @default("UNPAID")    // UNPAID | PENDING_CONFIRMATION | PAID | FAILED | REFUNDED
+
+  pickupTime          DateTime?
+  deliveredAt         DateTime?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  statusLogs          ShipmentStatusLog[]
+  payments            Payment[]
+  proofOfDelivery     ProofOfDelivery?
+
+  @@index([trackingCode])
+  @@index([status])
+  @@index([customerId])
+  @@index([riderId])
+  @@index([createdAt])
+  @@index([paymentStatus])
+  @@index([shipmentType])
+}
+
+model ShipmentStatusLog {
+  id          String   @id @default(cuid())
+  shipmentId  String
+  shipment    Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  status      String
+  note        String?
+  updatedById String
+  updatedBy   User     @relation(fields: [updatedById], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@index([shipmentId])
+  @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Payments & proof of delivery
+// ---------------------------------------------------------------------------
+
+model Payment {
+  id                   String   @id @default(cuid())
+  shipmentId           String
+  shipment             Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  amount               Float
+  method               String   // CASH | BANK_TRANSFER | PAYSTACK | FLUTTERWAVE | OTHER
+  status               String   @default("UNPAID")
+  transactionReference String?
+  confirmedById        String?
+  confirmedBy          User?    @relation("PaymentConfirmedBy", fields: [confirmedById], references: [id], onDelete: SetNull)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@index([shipmentId])
+  @@index([status])
+}
+
+model ProofOfDelivery {
+  id           String   @id @default(cuid())
+  shipmentId   String   @unique
+  shipment     Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  riderId      String
+  rider        User     @relation(fields: [riderId], references: [id])
+  receiverName String?
+  imageUrl     String?
+  note         String?
+  createdAt    DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Contact, audit, notifications
+// ---------------------------------------------------------------------------
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    String   @default("NEW") // NEW | READ | RESOLVED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  entity    String
+  entityId  String?
+  metadata  String?  // JSON serialized as string for SQLite portability
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([entity])
+  @@index([createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   @default("INFO")
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
