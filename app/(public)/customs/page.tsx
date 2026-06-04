@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FileCheck, ShieldCheck, Compass, PackageCheck, Receipt, Globe2 } from "lucide-react";
+import { ArrowRight, Compass, FileCheck, Globe2, PackageCheck, Receipt, ShieldCheck } from "lucide-react";
+import { PageHero } from "@/components/public/PageHero";
 
 export const metadata: Metadata = {
-  title: "Customs Service — Clearance, Compliance & Documentation",
+  title: "Customs Service | Clearance, Compliance & Documentation",
 };
 
 const ITEMS = [
@@ -18,37 +19,47 @@ const ITEMS = [
 export default function CustomsPage() {
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Customs Service</h1>
-          <p className="mt-4 max-w-3xl text-navy-100">
-            Avoid costly delays and complications. Our customs specialists handle
-            documentation, compliance, and clearance so your cargo keeps moving.
+      <PageHero
+        eyebrow="Customs clearance"
+        title="Documentation, compliance, and clearance support that keeps cargo moving."
+        description="Avoid costly delays and complications. Our customs specialists handle documentation, compliance, and clearance so your cargo keeps moving."
+      >
+        <div className="flex flex-wrap gap-3">
+          <Link href="/quote" className="btn-accent">Start Clearance Request</Link>
+          <Link href="/contact" className="btn-outline border-white/30 bg-white/10 text-white hover:border-white/60 hover:bg-white/15">Talk to an Expert</Link>
+        </div>
+      </PageHero>
+
+      <section className="container-page py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="section-eyebrow">Border-ready service</span>
+          <h2 className="section-title mt-4">Customs support from paperwork to release</h2>
+          <p className="section-copy">
+            Clear guidance and careful document handling for importers, exporters, businesses, and individuals.
           </p>
         </div>
-      </section>
-
-      <section className="container-page py-16">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((i) => (
-            <div key={i.title} className="card p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent">
+            <div key={i.title} className="card hover-lift group p-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-50 text-sky-700 transition group-hover:bg-accent group-hover:text-white">
                 <i.icon className="h-6 w-6" />
               </div>
               <h2 className="mt-4 text-lg font-semibold text-navy-900">{i.title}</h2>
-              <p className="mt-2 text-sm text-gray-600">{i.desc}</p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{i.desc}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl bg-navy-50 p-8 text-center">
-          <h2 className="text-2xl font-bold text-navy-900">Need help clearing your cargo?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-gray-600">
-            Tell us about your shipment and our customs team will guide you through every step.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/quote" className="btn-accent">Get a Free Quote</Link>
-            <Link href="/contact" className="btn-outline">Talk to an Expert</Link>
+        <div className="brand-panel mt-12 p-8 text-center">
+          <div className="relative">
+            <h2 className="text-2xl font-extrabold">Need help clearing your cargo?</h2>
+            <p className="mx-auto mt-3 max-w-xl text-navy-100">
+              Tell us about your shipment and our customs team will guide you through every step.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link href="/quote" className="btn-accent">Get a Free Quote <ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/contact" className="btn-outline border-white/30 bg-white/10 text-white hover:border-white/60 hover:bg-white/15">Talk to an Expert</Link>
+            </div>
           </div>
         </div>
       </section>

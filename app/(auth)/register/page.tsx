@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, UserPlus } from "lucide-react";
 import { registerCustomer } from "@/app/actions/auth";
 import type { ActionResult } from "@/lib/types";
 
@@ -24,7 +24,7 @@ export default function RegisterPage() {
 
   if (result?.ok) {
     return (
-      <div className="card p-8 text-center">
+      <div className="card border-sky-100 p-8 text-center animate-fade-up">
         <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
         <h1 className="mt-4 text-xl font-bold text-navy-900">Account created</h1>
         <p className="mt-2 text-sm text-gray-600">{result.message}</p>
@@ -36,8 +36,9 @@ export default function RegisterPage() {
   const fe = result?.fieldErrors;
 
   return (
-    <div className="card p-8">
-      <h1 className="text-2xl font-bold text-navy-900">Create your account</h1>
+    <div className="card border-sky-100 p-8 animate-fade-up">
+      <p className="section-eyebrow">Customer portal</p>
+      <h1 className="mt-3 text-2xl font-extrabold text-navy-900">Create your account</h1>
       <p className="mt-1 text-sm text-gray-600">Track quotes and shipments in one place.</p>
 
       {result && !result.ok && !fe && (
@@ -46,32 +47,32 @@ export default function RegisterPage() {
 
       <form onSubmit={onSubmit} className="mt-6 space-y-4">
         <div>
-          <label className="label-field">Full name</label>
-          <input name="name" className="input-field" placeholder="Jane Doe" />
+          <label htmlFor="register-name" className="label-field">Full name</label>
+          <input id="register-name" name="name" className="input-field" placeholder="Jane Doe" autoComplete="name" />
           <FieldError errors={fe?.name} />
         </div>
         <div>
-          <label className="label-field">Email</label>
-          <input name="email" type="email" className="input-field" placeholder="you@example.com" />
+          <label htmlFor="register-email" className="label-field">Email</label>
+          <input id="register-email" name="email" type="email" className="input-field" placeholder="you@example.com" autoComplete="email" />
           <FieldError errors={fe?.email} />
         </div>
         <div>
-          <label className="label-field">Phone</label>
-          <input name="phone" className="input-field" placeholder="Optional" />
+          <label htmlFor="register-phone" className="label-field">Phone</label>
+          <input id="register-phone" name="phone" className="input-field" placeholder="Optional" autoComplete="tel" />
           <FieldError errors={fe?.phone} />
         </div>
         <div>
-          <label className="label-field">Password</label>
-          <input name="password" type="password" className="input-field" placeholder="At least 8 characters" />
+          <label htmlFor="register-password" className="label-field">Password</label>
+          <input id="register-password" name="password" type="password" className="input-field" placeholder="At least 8 characters" autoComplete="new-password" />
           <FieldError errors={fe?.password} />
         </div>
         <div>
-          <label className="label-field">Confirm password</label>
-          <input name="confirmPassword" type="password" className="input-field" placeholder="Re-enter password" />
+          <label htmlFor="register-confirm-password" className="label-field">Confirm password</label>
+          <input id="register-confirm-password" name="confirmPassword" type="password" className="input-field" placeholder="Re-enter password" autoComplete="new-password" />
           <FieldError errors={fe?.confirmPassword} />
         </div>
         <button type="submit" disabled={pending} className="btn-accent w-full">
-          {pending ? <><Loader2 className="h-4 w-4 animate-spin" /> Creating…</> : "Create account"}
+          {pending ? <><Loader2 className="h-4 w-4 animate-spin" /> Creating...</> : <><UserPlus className="h-4 w-4" /> Create account</>}
         </button>
       </form>
 

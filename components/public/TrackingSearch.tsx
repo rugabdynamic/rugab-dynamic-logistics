@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Loader2, PackageX } from "lucide-react";
+import { Loader2, PackageX, Radar, Search } from "lucide-react";
 import { trackShipment, type TrackResponse } from "@/app/actions/track";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ShipmentTimeline } from "./ShipmentTimeline";
@@ -21,28 +21,40 @@ export function TrackingSearch() {
 
   return (
     <div className="space-y-8">
-      <form onSubmit={onSubmit} className="card flex flex-col gap-3 p-4 sm:flex-row">
-        <input
-          name="trackingCode"
-          className="input-field flex-1 uppercase"
-          placeholder="Enter tracking code (e.g. RGB-7F3K9Q2A)"
-          autoComplete="off"
-        />
-        <button type="submit" disabled={pending} className="btn-accent sm:w-40">
-          {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Search className="h-4 w-4" /> Track</>}
-        </button>
+      <form onSubmit={onSubmit} className="card border-sky-100 p-4 sm:p-5">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-50 text-sky-700">
+            <Radar className="h-5 w-5" />
+          </span>
+          <div>
+            <h2 className="font-bold text-navy-900">Live shipment lookup</h2>
+            <p className="text-sm text-slate-600">Enter your RUGAB tracking code to view shipment status.</p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <input
+            name="trackingCode"
+            className="input-field flex-1 uppercase"
+            placeholder="Enter tracking code (e.g. RGB-7F3K9Q2A)"
+            autoComplete="off"
+            aria-label="Tracking code"
+          />
+          <button type="submit" disabled={pending} className="btn-accent sm:w-40">
+            {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Search className="h-4 w-4" /> Track</>}
+          </button>
+        </div>
       </form>
 
       {res && !res.ok && (
-        <div className="card flex flex-col items-center p-10 text-center">
-          <PackageX className="h-10 w-10 text-gray-300" />
+        <div className="card flex flex-col items-center border-sky-100 p-10 text-center animate-fade-up">
+          <PackageX className="h-10 w-10 text-slate-300" />
           <p className="mt-3 text-sm text-gray-600">{res.message}</p>
         </div>
       )}
 
       {res?.ok && res.result && (
-        <div className="card p-6 sm:p-8">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-5">
+        <div className="card border-sky-100 p-6 animate-fade-up sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-navy-100 pb-5">
             <div>
               <p className="text-xs uppercase tracking-wide text-gray-400">Tracking code</p>
               <p className="font-mono text-lg font-bold text-navy-900">{res.result.trackingCode}</p>
@@ -61,7 +73,7 @@ export function TrackingSearch() {
             <Detail label="To" value={res.result.destination} />
           </div>
 
-          <div className="border-t border-gray-100 pt-5">
+          <div className="border-t border-navy-100 pt-5">
             <h3 className="mb-4 text-sm font-semibold text-navy-900">Status history</h3>
             <ShipmentTimeline timeline={res.result.timeline} />
           </div>

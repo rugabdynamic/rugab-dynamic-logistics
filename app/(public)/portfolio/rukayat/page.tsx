@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Mail, MessageCircle, PenLine, TrendingUp, Target } from "lucide-react";
+import { PageHero } from "@/components/public/PageHero";
 
 export const metadata: Metadata = {
-  title: "Oyewale Rukayat Omotunrayo — B2B Logistics Copywriter",
+  title: "Oyewale Rukayat Omotunrayo | B2B Logistics Copywriter",
 };
 
 const SERVICES = [
@@ -45,36 +46,25 @@ const RESULTS = [
 export default function RukayatPortfolioPage() {
   return (
     <>
-      <section className="bg-navy-900 py-20 text-white">
-        <div className="container-page">
-          <span className="inline-block rounded-full bg-accent/20 px-3 py-1 text-xs font-medium text-accent">
-            B2B Copywriter
-          </span>
-          <h1 className="mt-4 text-3xl font-bold sm:text-4xl">Oyewale Rukayat Omotunrayo</h1>
-          <p className="mt-5 max-w-3xl text-navy-100">
-            A professional copywriter specializing in logistics brands, with over 3 years of
-            experience helping companies communicate their value and win high-quality clients.
-            As an entrepreneur with a BSc background, she understands firsthand the importance
-            of client acquisition and how powerful, persuasive communication drives business
-            growth. She crafts compelling copy that helps logistics companies attract prospects,
-            build trust, and secure profitable partnership deals through clear, strategic
-            messaging and results-driven storytelling.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <a href="mailto:oyewalerukayat6@gmail.com" className="btn-accent">
-              <Mail className="h-4 w-4" /> Email Rukayat
-            </a>
-            <a
-              href="https://wa.me/2349059067154"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline border-white/30 bg-white/5 text-white hover:bg-white/10"
-            >
-              <MessageCircle className="h-4 w-4" /> WhatsApp
-            </a>
-          </div>
+      <PageHero
+        eyebrow="B2B copywriter"
+        title="Oyewale Rukayat Omotunrayo"
+        description="A professional copywriter specializing in logistics brands, with over 3 years of experience helping companies communicate their value and win high-quality clients. As an entrepreneur with a BSc background, she understands firsthand the importance of client acquisition and how powerful, persuasive communication drives business growth. She crafts compelling copy that helps logistics companies attract prospects, build trust, and secure profitable partnership deals through clear, strategic messaging and results-driven storytelling."
+      >
+        <div className="flex flex-wrap gap-3">
+          <a href="mailto:oyewalerukayat6@gmail.com" className="btn-accent">
+            <Mail className="h-4 w-4" /> Email Rukayat
+          </a>
+          <a
+            href="https://wa.me/2349059067154"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline border-white/30 bg-white/10 text-white hover:border-white/60 hover:bg-white/15"
+          >
+            <MessageCircle className="h-4 w-4" /> WhatsApp
+          </a>
         </div>
-      </section>
+      </PageHero>
 
       <section className="container-page py-16">
         <div className="grid gap-10 lg:grid-cols-3">
@@ -99,7 +89,7 @@ export default function RukayatPortfolioPage() {
               </h2>
               <div className="mt-4 grid gap-4 sm:grid-cols-3">
                 {PROJECTS.map((p) => (
-                  <div key={p.title} className="card p-5">
+                  <div key={p.title} className="card hover-lift p-5">
                     <h3 className="font-semibold text-navy-900">{p.title}</h3>
                     <p className="mt-2 text-sm text-gray-600">{p.desc}</p>
                   </div>

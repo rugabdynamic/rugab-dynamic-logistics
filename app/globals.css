@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  @apply bg-gray-50 text-navy-900 antialiased;
+  @apply bg-surface text-ink antialiased;
 }
 
 @layer components {
@@ -19,24 +19,42 @@ body {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60;
   }
   .btn-primary {
-    @apply btn bg-navy-700 text-white hover:bg-navy-800 focus:ring-navy-500;
+    @apply btn bg-navy-800 text-white shadow-soft hover:-translate-y-0.5 hover:bg-navy-700 focus-visible:ring-navy-500;
   }
   .btn-accent {
-    @apply btn bg-accent text-white hover:bg-accent-dark focus:ring-accent;
+    @apply btn bg-accent text-white shadow-glow hover:-translate-y-0.5 hover:bg-accent-dark focus-visible:ring-accent;
   }
   .btn-outline {
-    @apply btn border border-navy-200 bg-white text-navy-700 hover:bg-navy-50 focus:ring-navy-300;
+    @apply btn border border-navy-200 bg-white text-navy-800 hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50 focus-visible:ring-sky-300;
   }
   .input-field {
-    @apply w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm text-navy-900 shadow-sm placeholder:text-gray-400 focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500;
+    @apply w-full rounded-md border border-navy-100 bg-white px-3.5 py-2.5 text-sm text-ink shadow-sm transition placeholder:text-gray-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100;
   }
   .label-field {
-    @apply mb-1.5 block text-sm font-medium text-navy-800;
+    @apply mb-1.5 block text-sm font-semibold text-navy-800;
   }
   .card {
-    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+    @apply rounded-lg border border-navy-100/80 bg-white shadow-soft;
+  }
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-sky-700;
+  }
+  .section-title {
+    @apply text-3xl font-extrabold leading-tight text-navy-900 sm:text-4xl;
+  }
+  .section-copy {
+    @apply mt-3 text-base leading-7 text-slate-600;
+  }
+  .page-hero {
+    @apply relative overflow-hidden bg-navy-900 py-16 text-white sm:py-20;
+  }
+  .brand-panel {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 text-white shadow-lift;
+  }
+  .hover-lift {
+    @apply transition duration-300 hover:-translate-y-1 hover:shadow-lift;
   }
 }
