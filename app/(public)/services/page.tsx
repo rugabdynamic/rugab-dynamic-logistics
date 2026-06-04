@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Plane, Ship, Truck, FileCheck, Globe, Warehouse, Lightbulb, Home, ArrowRight,
+  ArrowRight, CheckCircle2, FileCheck, Globe, Home, Lightbulb, Plane, Ship, Truck, Warehouse,
 } from "lucide-react";
+import { PageHero } from "@/components/public/PageHero";
 
 export const metadata: Metadata = {
-  title: "Services — Freight, Customs & International Shipping",
+  title: "Services | Freight, Customs & International Shipping",
 };
 
 const SERVICES = [
@@ -80,29 +81,34 @@ const SERVICES = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Our Services</h1>
-          <p className="mt-4 max-w-3xl text-navy-100">
-            From freight forwarding to customs clearance, we deliver complete logistics
-            solutions for businesses and individuals worldwide.
+      <PageHero
+        eyebrow="Freight solutions"
+        title="Complete logistics services for local and international cargo."
+        description="From freight forwarding to customs clearance, we deliver complete logistics solutions for businesses and individuals worldwide."
+      >
+        <Link href="/quote" className="btn-accent">Request a Quote <ArrowRight className="h-4 w-4" /></Link>
+      </PageHero>
+
+      <section className="container-page py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="section-eyebrow">Service coverage</span>
+          <h2 className="section-title mt-4">Built around your shipment needs</h2>
+          <p className="section-copy">
+            Choose the service mix that fits your route, timeline, cargo type, and compliance requirements.
           </p>
         </div>
-      </section>
-
-      <section className="container-page py-16">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
           {SERVICES.map((s) => (
-            <div key={s.title} className="card p-7">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy-50 text-navy-700">
+            <div key={s.title} className="card hover-lift group p-7">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-50 text-sky-700 transition group-hover:bg-accent group-hover:text-white">
                 <s.icon className="h-6 w-6" />
               </div>
               <h2 className="mt-4 text-xl font-bold text-navy-900">{s.title}</h2>
-              <p className="mt-2 text-sm text-gray-600">{s.desc}</p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{s.desc}</p>
               <ul className="mt-4 space-y-2">
                 {s.points.map((p) => (
                   <li key={p} className="flex items-start gap-2 text-sm text-navy-800">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                     {p}
                   </li>
                 ))}
@@ -111,9 +117,15 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-wrap gap-3">
-          <Link href="/quote" className="btn-accent">Request a Quote <ArrowRight className="h-4 w-4" /></Link>
-          <Link href="/customs" className="btn-outline">Customs Service</Link>
+        <div className="brand-panel mt-12 grid gap-6 p-8 md:grid-cols-2 md:items-center">
+          <div>
+            <p className="section-eyebrow bg-white/10 text-sky-100">Need a tailored plan?</p>
+            <h2 className="mt-4 text-2xl font-extrabold">Let us match the right route, carrier, and clearance process.</h2>
+          </div>
+          <div className="flex flex-wrap gap-3 md:justify-end">
+            <Link href="/quote" className="btn-accent">Request a Quote <ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/customs" className="btn-outline border-white/30 bg-white/10 text-white hover:border-white/60 hover:bg-white/15">Customs Service</Link>
+          </div>
         </div>
       </section>
     </>

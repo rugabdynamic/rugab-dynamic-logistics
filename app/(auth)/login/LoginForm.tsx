@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { Loader2, LogIn } from "lucide-react";
 import { authenticate } from "@/app/actions/auth";
 
 export function LoginForm() {
@@ -26,9 +26,10 @@ export function LoginForm() {
   }
 
   return (
-    <div className="card p-8">
-      <h1 className="text-2xl font-bold text-navy-900">Welcome back</h1>
-      <p className="mt-1 text-sm text-gray-600">Sign in to your dashboard.</p>
+    <div className="card border-sky-100 p-8 animate-fade-up">
+      <p className="section-eyebrow">Dashboard access</p>
+      <h1 className="mt-3 text-2xl font-extrabold text-navy-900">Welcome back</h1>
+      <p className="mt-1 text-sm text-gray-600">Sign in to manage quotes, shipments, payments, and updates.</p>
 
       {error && (
         <div className="mt-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
@@ -36,15 +37,15 @@ export function LoginForm() {
 
       <form onSubmit={onSubmit} className="mt-6 space-y-4">
         <div>
-          <label className="label-field">Email</label>
-          <input name="email" type="email" required className="input-field" placeholder="you@example.com" />
+          <label htmlFor="login-email" className="label-field">Email</label>
+          <input id="login-email" name="email" type="email" required className="input-field" placeholder="you@example.com" autoComplete="email" />
         </div>
         <div>
-          <label className="label-field">Password</label>
-          <input name="password" type="password" required className="input-field" placeholder="••••••••" />
+          <label htmlFor="login-password" className="label-field">Password</label>
+          <input id="login-password" name="password" type="password" required className="input-field" placeholder="Password" autoComplete="current-password" />
         </div>
         <button type="submit" disabled={pending} className="btn-accent w-full">
-          {pending ? <><Loader2 className="h-4 w-4 animate-spin" /> Signing in…</> : "Sign in"}
+          {pending ? <><Loader2 className="h-4 w-4 animate-spin" /> Signing in...</> : <><LogIn className="h-4 w-4" /> Sign in</>}
         </button>
       </form>
 
