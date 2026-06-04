@@ -2,41 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-inter: "Inter", system-ui, sans-serif;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-gray-50 text-navy-900 antialiased;
+  @apply bg-canvas text-ink antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display;
 }
 
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+  /* Legacy button classes — repointed onto brand tokens so un-migrated
+     markup adopts the new identity. New code should prefer <Button />. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:pointer-events-none;
   }
   .btn-primary {
-    @apply btn bg-navy-700 text-white hover:bg-navy-800 focus:ring-navy-500;
+    @apply btn bg-navy text-white hover:bg-navy-deep focus-visible:ring-navy;
   }
   .btn-accent {
-    @apply btn bg-accent text-white hover:bg-accent-dark focus:ring-accent;
+    @apply btn bg-gradient-to-r from-brand-red to-brand-orange text-white shadow-brand hover:opacity-95 focus-visible:ring-brand-orange;
   }
   .btn-outline {
-    @apply btn border border-navy-200 bg-white text-navy-700 hover:bg-navy-50 focus:ring-navy-300;
+    @apply btn border border-navy/20 bg-surface text-navy hover:bg-canvas focus-visible:ring-brand-teal;
   }
   .input-field {
-    @apply w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm text-navy-900 shadow-sm placeholder:text-gray-400 focus:border-navy-500 focus:outline-none focus:ring-1 focus:ring-navy-500;
+    @apply w-full rounded-xl border border-slate-300 bg-surface px-3.5 py-2.5 text-sm text-ink shadow-sm placeholder:text-muted/70 transition focus:border-brand-teal focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal/40;
   }
   .label-field {
-    @apply mb-1.5 block text-sm font-medium text-navy-800;
+    @apply mb-1.5 block text-sm font-medium text-navy;
   }
   .card {
-    @apply rounded-xl border border-gray-200 bg-white shadow-sm;
+    @apply rounded-2xl border border-slate-200/70 bg-surface shadow-brand;
+  }
+}
+
+/* Respect reduced-motion: disable non-essential animation + smooth scroll. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }

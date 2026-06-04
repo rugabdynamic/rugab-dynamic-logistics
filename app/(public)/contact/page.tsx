@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { PageHeader } from "@/components/public/PageHeader";
+import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -11,46 +14,49 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Contact Us</h1>
-          <p className="mt-4 max-w-2xl text-navy-100">
-            Have a question or need a logistics partner? Reach out and our team will respond promptly.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Get in touch"
+        title="Contact Us"
+        subtitle="Have a question or need a logistics partner? Reach out and our team will respond promptly."
+      />
 
-      <section className="container-page py-12">
+      <Section spacing="sm">
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="space-y-6 lg:col-span-1">
-            <div className="card p-6">
-              <Phone className="h-6 w-6 text-accent" />
-              <h3 className="mt-3 font-semibold text-navy-900">Call us</h3>
-              <p className="mt-1 text-sm text-gray-600">07033403577</p>
-              <p className="text-sm text-gray-600">09059067154</p>
-              <p className="text-sm text-gray-600">08021210156</p>
-            </div>
-            <div className="card p-6">
-              <MapPin className="h-6 w-6 text-accent" />
-              <h3 className="mt-3 font-semibold text-navy-900">Visit us</h3>
-              <p className="mt-1 text-sm text-gray-600">
+            <Card className="p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal">
+                <Phone className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 font-semibold text-navy">Call us</h3>
+              <p className="mt-1 text-sm text-muted">07033403577</p>
+              <p className="text-sm text-muted">09059067154</p>
+              <p className="text-sm text-muted">08021210156</p>
+            </Card>
+            <Card className="p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 font-semibold text-navy">Visit us</h3>
+              <p className="mt-1 text-sm text-muted">
                 No 2 Asa-Afriogun Street, Ajao Estate, Oshodi, Lagos
               </p>
-            </div>
-            <div className="card p-6">
-              <Mail className="h-6 w-6 text-accent" />
-              <h3 className="mt-3 font-semibold text-navy-900">Email us</h3>
-              <a href={`mailto:${adminEmail}`} className="mt-1 block text-sm text-accent hover:underline">
+            </Card>
+            <Card className="p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal">
+                <Mail className="h-5 w-5" />
+              </div>
+              <h3 className="mt-3 font-semibold text-navy">Email us</h3>
+              <a href={`mailto:${adminEmail}`} className="mt-1 block text-sm font-medium text-brand-teal hover:underline">
                 {adminEmail}
               </a>
-            </div>
+            </Card>
           </div>
 
           <div className="lg:col-span-2">
             <ContactForm />
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

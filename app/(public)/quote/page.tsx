@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { QuoteForm } from "@/components/forms/QuoteForm";
+import { PageHeader } from "@/components/public/PageHeader";
+import { Section } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
   title: "Get a Free Freight Quote",
@@ -8,21 +10,17 @@ export const metadata: Metadata = {
 export default function QuotePage() {
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Get a Free Freight Quote</h1>
-          <p className="mt-4 max-w-2xl text-navy-100">
-            Tell us about your shipment and we&apos;ll send you a fast, cost-effective
-            estimate. You&apos;ll receive a tracking code to follow your request.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Free estimate"
+        title="Get a Free Freight Quote"
+        subtitle="Tell us about your shipment and we'll send you a fast, cost-effective estimate. You'll receive a tracking code to follow your request."
+      />
 
-      <section className="container-page py-12">
+      <Section spacing="sm">
         <div className="mx-auto max-w-3xl">
           <QuoteForm />
         </div>
-      </section>
+      </Section>
     </>
   );
 }

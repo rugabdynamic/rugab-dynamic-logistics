@@ -3,6 +3,11 @@ import Link from "next/link";
 import {
   Plane, Ship, Truck, FileCheck, Globe, Warehouse, Lightbulb, Home, ArrowRight,
 } from "lucide-react";
+import { PageHeader } from "@/components/public/PageHeader";
+import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
+import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Services — Freight, Customs & International Shipping",
@@ -80,42 +85,44 @@ const SERVICES = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Our Services</h1>
-          <p className="mt-4 max-w-3xl text-navy-100">
-            From freight forwarding to customs clearance, we deliver complete logistics
-            solutions for businesses and individuals worldwide.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="What we do"
+        title="Our Services"
+        subtitle="From freight forwarding to customs clearance, we deliver complete logistics solutions for businesses and individuals worldwide."
+      />
 
-      <section className="container-page py-16">
+      <Section>
         <div className="grid gap-6 md:grid-cols-2">
-          {SERVICES.map((s) => (
-            <div key={s.title} className="card p-7">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy-50 text-navy-700">
-                <s.icon className="h-6 w-6" />
-              </div>
-              <h2 className="mt-4 text-xl font-bold text-navy-900">{s.title}</h2>
-              <p className="mt-2 text-sm text-gray-600">{s.desc}</p>
-              <ul className="mt-4 space-y-2">
-                {s.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-navy-800">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {SERVICES.map((s, i) => (
+            <Reveal key={s.title} delay={(i % 2) * 0.08}>
+              <Card interactive className="group h-full p-7">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy/5 text-navy transition-colors group-hover:bg-gradient-to-br group-hover:from-brand-red group-hover:to-brand-orange group-hover:text-white">
+                  <s.icon className="h-6 w-6" />
+                </div>
+                <h2 className="mt-4 text-xl font-bold text-navy">{s.title}</h2>
+                <p className="mt-2 text-sm text-muted">{s.desc}</p>
+                <ul className="mt-4 space-y-2">
+                  {s.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-sm text-navy/80">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-teal" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </Reveal>
           ))}
         </div>
 
         <div className="mt-12 flex flex-wrap gap-3">
-          <Link href="/quote" className="btn-accent">Request a Quote <ArrowRight className="h-4 w-4" /></Link>
-          <Link href="/customs" className="btn-outline">Customs Service</Link>
+          <Link href="/quote">
+            <Button>Request a Quote <ArrowRight className="h-4 w-4" /></Button>
+          </Link>
+          <Link href="/customs">
+            <Button variant="ghost">Customs Service</Button>
+          </Link>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

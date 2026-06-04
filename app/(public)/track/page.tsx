@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { TrackingSearch } from "@/components/public/TrackingSearch";
+import { PageHeader } from "@/components/public/PageHeader";
+import { Section } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
   title: "Track Your Shipment",
@@ -8,21 +10,17 @@ export const metadata: Metadata = {
 export default function TrackPage() {
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Track Your Shipment</h1>
-          <p className="mt-4 max-w-2xl text-navy-100">
-            Enter the tracking code from your quote request or shipment to see its
-            current status and history.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Live status"
+        title="Track Your Shipment"
+        subtitle="Enter the tracking code from your quote request or shipment to see its current status and history."
+      />
 
-      <section className="container-page py-12">
+      <Section spacing="sm">
         <div className="mx-auto max-w-3xl">
           <TrackingSearch />
         </div>
-      </section>
+      </Section>
     </>
   );
 }

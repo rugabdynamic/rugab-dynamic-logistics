@@ -28,16 +28,16 @@ export function QuoteForm() {
   if (result?.ok) {
     return (
       <div className="card p-8 text-center">
-        <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
-        <h2 className="mt-4 text-xl font-bold text-navy-900">Quote request received!</h2>
+        <CheckCircle2 className="mx-auto h-12 w-12 text-brand-teal" />
+        <h2 className="mt-4 text-xl font-bold text-navy">Quote request received!</h2>
         <p className="mt-2 text-gray-600">{result.message}</p>
         <div className="mx-auto mt-5 inline-flex items-center gap-2 rounded-lg bg-navy-50 px-4 py-3">
           <span className="text-sm text-gray-600">Your tracking code:</span>
-          <span className="font-mono font-bold text-navy-900">{result.trackingCode}</span>
+          <span className="font-mono font-bold text-navy">{result.trackingCode}</span>
           <button
             type="button"
             onClick={() => navigator.clipboard?.writeText(result.trackingCode ?? "")}
-            className="text-navy-500 hover:text-accent"
+            className="text-muted hover:text-brand-teal"
             aria-label="Copy tracking code"
           >
             <Copy className="h-4 w-4" />
@@ -95,7 +95,7 @@ export function QuoteForm() {
       </div>
 
       <fieldset className="grid gap-5 sm:grid-cols-2">
-        <legend className="mb-2 text-sm font-semibold text-navy-900">Pickup</legend>
+        <legend className="mb-2 text-sm font-semibold text-navy">Pickup</legend>
         <input name="pickupCountry" className="input-field" placeholder="Country" />
         <input name="pickupState" className="input-field" placeholder="State" />
         <input name="pickupCity" className="input-field" placeholder="City" />
@@ -106,7 +106,7 @@ export function QuoteForm() {
       </fieldset>
 
       <fieldset className="grid gap-5 sm:grid-cols-2">
-        <legend className="mb-2 text-sm font-semibold text-navy-900">Destination</legend>
+        <legend className="mb-2 text-sm font-semibold text-navy">Destination</legend>
         <input name="destinationCountry" className="input-field" placeholder="Country" />
         <input name="destinationState" className="input-field" placeholder="State" />
         <input name="destinationCity" className="input-field" placeholder="City" />
@@ -147,7 +147,7 @@ export function QuoteForm() {
       </div>
 
       <label className="flex items-start gap-3 text-sm text-gray-600">
-        <input name="consent" type="checkbox" className="mt-0.5 h-4 w-4 rounded border-gray-300 text-accent focus:ring-accent" />
+        <input name="consent" type="checkbox" className="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-teal focus:ring-brand-teal" />
         <span>I consent to Rugab Dynamic Logistics contacting me about this quote request.</span>
       </label>
       <FieldError errors={fe?.consent} />

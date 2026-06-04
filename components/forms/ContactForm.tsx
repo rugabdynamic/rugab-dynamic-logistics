@@ -27,8 +27,8 @@ export function ContactForm() {
   if (result?.ok) {
     return (
       <div className="card p-8 text-center">
-        <CheckCircle2 className="mx-auto h-12 w-12 text-accent" />
-        <h2 className="mt-4 text-xl font-bold text-navy-900">Message sent!</h2>
+        <CheckCircle2 className="mx-auto h-12 w-12 text-brand-teal" />
+        <h2 className="mt-4 text-xl font-bold text-navy">Message sent!</h2>
         <p className="mt-2 text-gray-600">{result.message}</p>
         <button onClick={() => setResult(null)} className="btn-outline mt-6">
           Send another message

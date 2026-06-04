@@ -18,7 +18,7 @@ export function ShipmentTimeline({
           <li key={i} className="relative">
             <span className="absolute -left-[31px] flex h-5 w-5 items-center justify-center rounded-full bg-white">
               {last ? (
-                <CheckCircle2 className="h-5 w-5 text-accent" />
+                <CheckCircle2 className="h-5 w-5 text-brand-teal" />
               ) : (
                 <Circle className="h-4 w-4 text-navy-300" />
               )}

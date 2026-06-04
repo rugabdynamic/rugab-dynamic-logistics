@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FileCheck, ShieldCheck, Compass, PackageCheck, Receipt, Globe2 } from "lucide-react";
+import { PageHeader } from "@/components/public/PageHeader";
+import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
+import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Customs Service — Clearance, Compliance & Documentation",
@@ -18,40 +23,44 @@ const ITEMS = [
 export default function CustomsPage() {
   return (
     <>
-      <section className="bg-navy-900 py-16 text-white">
-        <div className="container-page">
-          <h1 className="text-3xl font-bold sm:text-4xl">Customs Service</h1>
-          <p className="mt-4 max-w-3xl text-navy-100">
-            Avoid costly delays and complications. Our customs specialists handle
-            documentation, compliance, and clearance so your cargo keeps moving.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Clearance & compliance"
+        title="Customs Service"
+        subtitle="Avoid costly delays and complications. Our customs specialists handle documentation, compliance, and clearance so your cargo keeps moving."
+      />
 
-      <section className="container-page py-16">
+      <Section>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ITEMS.map((i) => (
-            <div key={i.title} className="card p-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                <i.icon className="h-6 w-6" />
-              </div>
-              <h2 className="mt-4 text-lg font-semibold text-navy-900">{i.title}</h2>
-              <p className="mt-2 text-sm text-gray-600">{i.desc}</p>
-            </div>
+          {ITEMS.map((i, idx) => (
+            <Reveal key={i.title} delay={(idx % 3) * 0.08}>
+              <Card interactive className="group h-full p-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal transition-colors group-hover:bg-brand-teal group-hover:text-white">
+                  <i.icon className="h-6 w-6" />
+                </div>
+                <h2 className="mt-4 text-lg font-semibold text-navy">{i.title}</h2>
+                <p className="mt-2 text-sm text-muted">{i.desc}</p>
+              </Card>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl bg-navy-50 p-8 text-center">
-          <h2 className="text-2xl font-bold text-navy-900">Need help clearing your cargo?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-gray-600">
+        <div className="mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-navy to-navy-deep p-8 text-center text-white shadow-brand">
+          <h2 className="text-2xl font-bold text-white">Need help clearing your cargo?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-navy-100">
             Tell us about your shipment and our customs team will guide you through every step.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/quote" className="btn-accent">Get a Free Quote</Link>
-            <Link href="/contact" className="btn-outline">Talk to an Expert</Link>
+            <Link href="/quote">
+              <Button>Get a Free Quote</Button>
+            </Link>
+            <Link href="/contact">
+              <Button variant="ghost" className="border-white/30 bg-white/5 text-white hover:bg-white/10 hover:text-white">
+                Talk to an Expert
+              </Button>
+            </Link>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }
