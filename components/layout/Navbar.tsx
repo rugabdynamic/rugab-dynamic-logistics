@@ -27,7 +27,7 @@ export function Navbar() {
           <BrandMark compact />
         </Link>
 
-        <div className="hidden items-center rounded-full border border-navy-100 bg-white px-2 py-1 shadow-sm md:flex">
+        <div className="hidden items-center rounded-full border border-navy-100 bg-white px-2 py-1 shadow-sm lg:flex">
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
@@ -42,7 +42,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <Link href="/login" className="btn-outline">
             Sign in
           </Link>
@@ -52,7 +52,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy-100 text-navy-800 transition hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-navy-100 text-navy-800 transition hover:bg-sky-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -61,7 +61,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      <div className={cn("border-t border-navy-100 bg-white/95 md:hidden", open ? "block animate-slide-in" : "hidden")}>
+      <div className={cn("border-t border-navy-100 bg-white/95 lg:hidden", open ? "block animate-slide-in" : "hidden")}>
         <div className="container-page flex flex-col gap-1 py-4">
           {NAV_LINKS.map((l) => (
             <Link
