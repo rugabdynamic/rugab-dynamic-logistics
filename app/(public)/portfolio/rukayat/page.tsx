@@ -15,6 +15,23 @@ export const metadata: Metadata = {
   title: "Oyewale Rukayat Omotunrayo | B2B Logistics Copywriter",
   description:
     "Portfolio for Oyewale Rukayat Omotunrayo, a B2B logistics copywriter helping freight, shipping, import, export, and delivery brands win better clients.",
+  icons: {
+    icon: [
+      {
+        url: "/portfolio/rukayat/favicon.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+    ],
+    apple: [
+      {
+        url: "/portfolio/rukayat/favicon.png",
+        type: "image/png",
+        sizes: "192x192",
+      },
+    ],
+    shortcut: "/portfolio/rukayat/favicon.png",
+  },
 };
 
 const PORTRAIT_SRC = "/portfolio/rukayat/rukayat-portrait.jpg";
