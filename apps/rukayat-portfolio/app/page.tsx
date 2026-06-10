@@ -1,11 +1,14 @@
 import {
   ArrowRight,
   CheckCircle2,
-  ClipboardList,
+  GitBranch,
+  Linkedin,
   Mail,
   MessageCircle,
+  PanelTop,
   PenLine,
   Search,
+  SendHorizontal,
   Target,
   TrendingUp,
 } from "lucide-react";
@@ -26,18 +29,26 @@ const POSITIONING = [
 
 const SERVICES = [
   {
+    icon: SendHorizontal,
+    label: "Outreach",
     title: "Cold Email Outreach",
     desc: "Research-backed campaigns for manufacturers, exporters, importers, and construction buyers.",
   },
   {
+    icon: GitBranch,
+    label: "Sequence",
     title: "Email Sequences",
     desc: "Multi-touch nurture, follow-up, and reactivation sequences written around the buying journey.",
   },
   {
+    icon: PanelTop,
+    label: "Website",
     title: "Website Copy",
     desc: "Sharper service pages, homepage messaging, and conversion-focused copy for logistics brands.",
   },
   {
+    icon: Linkedin,
+    label: "LinkedIn",
     title: "LinkedIn Content",
     desc: "Authority-led posts and profile copy for founders, sales teams, and logistics operators.",
   },
@@ -306,15 +317,32 @@ export default function RukayatPortfolioPage() {
           </div>
 
           <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">
-            {SERVICES.map((service) => (
-              <div key={service.title} className="bg-[#0f5f9d] p-6">
-                <ClipboardList className="h-6 w-6 text-[#cfe8ff]" />
-                <h3 className="mt-5 text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#dbeaf7]">
-                  {service.desc}
-                </p>
-              </div>
-            ))}
+            {SERVICES.map((service, index) => {
+              const ServiceIcon = service.icon;
+
+              return (
+                <div
+                  key={service.title}
+                  className="relative min-h-[260px] overflow-hidden bg-[#0f5f9d] p-6"
+                >
+                  <span className="pointer-events-none absolute -right-4 -top-8 text-[7rem] font-semibold leading-none text-white/5">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="relative flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#0078d4] shadow-[0_18px_45px_-28px_rgba(0,0,0,0.65)]">
+                      <ServiceIcon className="h-6 w-6" />
+                    </span>
+                    <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-[#dbeaf7]">
+                      {service.label}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-xl font-semibold">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[#dbeaf7]">
+                    {service.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
