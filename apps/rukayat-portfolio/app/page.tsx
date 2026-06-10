@@ -104,8 +104,12 @@ export default function RukayatPortfolioPage() {
             RO
           </span>
           <span className="leading-tight">
-            <span className="block text-sm font-semibold">Rukayat Omotunrayo</span>
-            <span className="block text-xs text-[#616161]">B2B logistics copywriter</span>
+            <span className="block text-sm font-semibold">
+              Rukayat Omotunrayo
+            </span>
+            <span className="block text-xs text-[#616161]">
+              B2B logistics copywriter
+            </span>
           </span>
         </a>
         <nav className="hidden items-center gap-6 text-sm font-medium text-[#424242] sm:flex">
@@ -136,11 +140,11 @@ export default function RukayatPortfolioPage() {
         className="mx-auto grid w-full max-w-7xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:pb-24 lg:pt-14"
       >
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-[#c7e0f4] bg-white px-4 py-2 text-xs font-bold uppercase text-[#005a9e]">
+          {/* <p className="inline-flex items-center gap-2 rounded-full border border-[#c7e0f4] bg-white px-4 py-2 text-xs font-bold uppercase text-[#005a9e]">
             <PenLine className="h-4 w-4" />
             Copy for logistics sales teams
-          </p>
-          <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[0.98] text-[#1f1f1f] sm:text-6xl lg:text-7xl">
+          </p> */}
+          <h1 className="mt-0 max-w-4xl text-5xl font-semibold leading-[0.98] text-[#1f1f1f] sm:text-6xl lg:text-7xl">
             Oyewale Rukayat Omotunrayo
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#424242] sm:text-xl">
@@ -194,7 +198,8 @@ export default function RukayatPortfolioPage() {
                 Available for
               </p>
               <p className="mt-2 text-2xl font-semibold leading-tight">
-                Outreach, website copy, and sales messaging for logistics brands.
+                Outreach, website copy, and sales messaging for logistics
+                brands.
               </p>
             </div>
           </div>
@@ -216,13 +221,17 @@ export default function RukayatPortfolioPage() {
             </p>
           </div>
           <div>
-            <p className="text-xs font-bold uppercase text-[#005a9e]">Audience</p>
+            <p className="text-xs font-bold uppercase text-[#005a9e]">
+              Audience
+            </p>
             <p className="mt-2 text-lg font-semibold text-[#1f1f1f]">
               Manufacturers, exporters, importers, builders
             </p>
           </div>
           <div>
-            <p className="text-xs font-bold uppercase text-[#005a9e]">Strength</p>
+            <p className="text-xs font-bold uppercase text-[#005a9e]">
+              Strength
+            </p>
             <p className="mt-2 text-lg font-semibold text-[#1f1f1f]">
               Research-led messaging that sounds human
             </p>
@@ -310,6 +319,40 @@ export default function RukayatPortfolioPage() {
         </div>
       </section>
 
+      <section id="tools" className="bg-white px-5 py-20 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#005a9e]">
+              <Search className="h-4 w-4" />
+              Research and outreach tools
+            </p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#1f1f1f]">
+              Tools she uses to research prospects, write sharper messages, and
+              manage outreach.
+            </h2>
+          </div>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {TOOLS.map((tool) => (
+              <div
+                key={tool.name}
+                className="flex min-h-16 items-center gap-3 rounded-2xl border border-[#dbeaf7] bg-[#f5f9ff] px-4 py-3 text-sm font-semibold text-[#005a9e] shadow-sm transition hover:-translate-y-0.5 hover:border-[#71afe5] hover:bg-[#eff6fc]"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+                    alt=""
+                    className="h-5 w-5"
+                    loading="lazy"
+                  />
+                </span>
+                <span>{tool.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#005a9e]">
@@ -348,43 +391,12 @@ export default function RukayatPortfolioPage() {
         </aside>
       </section>
 
-      <section id="tools" className="bg-white px-5 py-20 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#005a9e]">
-              <Search className="h-4 w-4" />
-              Research and outreach tools
-            </p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#1f1f1f]">
-              Tools she uses to research prospects, write sharper messages, and manage outreach.
-            </h2>
-          </div>
-
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {TOOLS.map((tool) => (
-              <div
-                key={tool.name}
-                className="flex min-h-16 items-center gap-3 rounded-2xl border border-[#dbeaf7] bg-[#f5f9ff] px-4 py-3 text-sm font-semibold text-[#005a9e] shadow-sm transition hover:-translate-y-0.5 hover:border-[#71afe5] hover:bg-[#eff6fc]"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
-                  <img
-                    src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
-                    alt=""
-                    className="h-5 w-5"
-                    loading="lazy"
-                  />
-                </span>
-                <span>{tool.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="contact" className="px-5 pb-8 sm:px-8">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0078d4] px-6 py-10 text-white sm:px-10 lg:flex lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm font-bold uppercase text-[#dbeaf7]">Contact</p>
+            <p className="text-sm font-bold uppercase text-[#dbeaf7]">
+              Contact
+            </p>
             <h2 className="mt-3 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
               Need logistics copy that sounds credible before the sales call?
             </h2>
