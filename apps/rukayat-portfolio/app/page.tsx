@@ -97,31 +97,31 @@ const TOOLS = [
 
 export default function RukayatPortfolioPage() {
   return (
-    <main className="min-h-screen bg-[#f6f7f4] text-[#17211d]">
+    <main className="min-h-screen bg-[#f5f9ff] text-[#1f1f1f]">
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
         <a href="#top" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#17211d] text-sm font-semibold text-white">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0078d4] text-sm font-semibold text-white">
             RO
           </span>
           <span className="leading-tight">
             <span className="block text-sm font-semibold">Rukayat Omotunrayo</span>
-            <span className="block text-xs text-[#66756d]">B2B logistics copywriter</span>
+            <span className="block text-xs text-[#616161]">B2B logistics copywriter</span>
           </span>
         </a>
-        <nav className="hidden items-center gap-6 text-sm font-medium text-[#53615a] sm:flex">
-          <a href="#work" className="transition hover:text-[#17211d]">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-[#424242] sm:flex">
+          <a href="#work" className="transition hover:text-[#0078d4]">
             Work
           </a>
-          <a href="#services" className="transition hover:text-[#17211d]">
+          <a href="#services" className="transition hover:text-[#0078d4]">
             Services
           </a>
-          <a href="#contact" className="transition hover:text-[#17211d]">
+          <a href="#contact" className="transition hover:text-[#0078d4]">
             Contact
           </a>
         </nav>
         <a
           href={`mailto:${CONTACT.email}`}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#cbd5cf] bg-white text-[#17211d] shadow-sm transition hover:-translate-y-0.5 hover:border-[#17211d]"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#c7e0f4] bg-white text-[#0078d4] shadow-sm transition hover:-translate-y-0.5 hover:border-[#0078d4] hover:bg-[#eff6fc]"
           aria-label="Email Rukayat"
         >
           <Mail className="h-4 w-4" />
@@ -133,14 +133,14 @@ export default function RukayatPortfolioPage() {
         className="mx-auto grid w-full max-w-7xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:pb-24 lg:pt-14"
       >
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-[#cbd5cf] bg-white px-4 py-2 text-xs font-bold uppercase text-[#4f6f61]">
+          <p className="inline-flex items-center gap-2 rounded-full border border-[#c7e0f4] bg-white px-4 py-2 text-xs font-bold uppercase text-[#005a9e]">
             <PenLine className="h-4 w-4" />
             Copy for logistics sales teams
           </p>
-          <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[0.98] text-[#17211d] sm:text-6xl lg:text-7xl">
+          <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[0.98] text-[#1f1f1f] sm:text-6xl lg:text-7xl">
             Oyewale Rukayat Omotunrayo
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4f5c55] sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#424242] sm:text-xl">
             A B2B logistics copywriter helping freight, shipping, import,
             export, and delivery brands turn technical service value into clear
             messages that win trust and start profitable conversations.
@@ -149,7 +149,7 @@ export default function RukayatPortfolioPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href={`mailto:${CONTACT.email}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#17211d] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_-24px_rgba(23,33,29,0.85)] transition hover:-translate-y-0.5 hover:bg-[#24362f]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0078d4] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_50px_-24px_rgba(0,120,212,0.8)] transition hover:-translate-y-0.5 hover:bg-[#106ebe]"
             >
               Start a project <ArrowRight className="h-4 w-4" />
             </a>
@@ -157,7 +157,7 @@ export default function RukayatPortfolioPage() {
               href={CONTACT.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#cbd5cf] bg-white px-6 py-3 text-sm font-semibold text-[#17211d] transition hover:-translate-y-0.5 hover:border-[#17211d]"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c7e0f4] bg-white px-6 py-3 text-sm font-semibold text-[#005a9e] transition hover:-translate-y-0.5 hover:border-[#0078d4] hover:bg-[#eff6fc]"
             >
               <MessageCircle className="h-4 w-4" />
               WhatsApp
@@ -168,7 +168,7 @@ export default function RukayatPortfolioPage() {
             {POSITIONING.map((item) => (
               <div
                 key={item}
-                className="border-l border-[#bdccc4] pl-4 text-sm leading-6 text-[#526159]"
+                className="border-l border-[#c7e0f4] pl-4 text-sm leading-6 text-[#424242]"
               >
                 {item}
               </div>
@@ -177,17 +177,17 @@ export default function RukayatPortfolioPage() {
         </div>
 
         <div className="relative">
-          <div className="absolute -left-4 top-10 hidden h-28 w-28 rounded-full border border-[#c7b8d7] lg:block" />
+          <div className="absolute -left-4 top-10 hidden h-28 w-28 rounded-full border border-[#71afe5] lg:block" />
           <div
-            className="relative min-h-[500px] overflow-hidden rounded-[2rem] bg-[#dfe4e0] bg-cover bg-center shadow-[0_30px_90px_-48px_rgba(23,33,29,0.95)] sm:min-h-[620px]"
+            className="relative min-h-[500px] overflow-hidden rounded-[2rem] bg-[#deecf9] bg-cover bg-center shadow-[0_30px_90px_-48px_rgba(0,69,120,0.72)] sm:min-h-[620px]"
             role="img"
             aria-label="Portrait of Oyewale Rukayat Omotunrayo"
             style={{
-              backgroundImage: `linear-gradient(180deg, rgba(23,33,29,0) 50%, rgba(23,33,29,0.76) 100%), url("${PORTRAIT_SRC}")`,
+              backgroundImage: `linear-gradient(180deg, rgba(0,69,120,0) 50%, rgba(0,69,120,0.78) 100%), url("${PORTRAIT_SRC}")`,
             }}
           >
-            <div className="absolute inset-x-5 bottom-5 rounded-3xl border border-white/20 bg-[#17211d]/80 p-5 text-white backdrop-blur">
-              <p className="text-xs font-bold uppercase text-[#cfe2d8]">
+            <div className="absolute inset-x-5 bottom-5 rounded-3xl border border-white/20 bg-[#004578]/85 p-5 text-white backdrop-blur">
+              <p className="text-xs font-bold uppercase text-[#cfe8ff]">
                 Available for
               </p>
               <p className="mt-2 text-2xl font-semibold leading-tight">
@@ -195,32 +195,32 @@ export default function RukayatPortfolioPage() {
               </p>
             </div>
           </div>
-          <div className="absolute -right-3 top-8 rounded-2xl border border-[#d8ded9] bg-white px-5 py-4 shadow-[0_20px_60px_-35px_rgba(23,33,29,0.85)]">
-            <p className="text-3xl font-semibold text-[#17211d]">3+</p>
-            <p className="text-xs font-medium uppercase text-[#6a776f]">
+          <div className="absolute -right-3 top-8 rounded-2xl border border-[#c7e0f4] bg-white px-5 py-4 shadow-[0_20px_60px_-35px_rgba(0,69,120,0.65)]">
+            <p className="text-3xl font-semibold text-[#0078d4]">3+</p>
+            <p className="text-xs font-medium uppercase text-[#616161]">
               Years writing
             </p>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[#d8ded9] bg-white">
+      <section className="border-y border-[#dbeaf7] bg-white">
         <div className="mx-auto grid max-w-7xl gap-6 px-5 py-8 sm:px-8 md:grid-cols-3">
           <div>
-            <p className="text-xs font-bold uppercase text-[#6d4c7d]">Focus</p>
-            <p className="mt-2 text-lg font-semibold text-[#17211d]">
+            <p className="text-xs font-bold uppercase text-[#005a9e]">Focus</p>
+            <p className="mt-2 text-lg font-semibold text-[#1f1f1f]">
               B2B logistics growth copy
             </p>
           </div>
           <div>
-            <p className="text-xs font-bold uppercase text-[#6d4c7d]">Audience</p>
-            <p className="mt-2 text-lg font-semibold text-[#17211d]">
+            <p className="text-xs font-bold uppercase text-[#005a9e]">Audience</p>
+            <p className="mt-2 text-lg font-semibold text-[#1f1f1f]">
               Manufacturers, exporters, importers, builders
             </p>
           </div>
           <div>
-            <p className="text-xs font-bold uppercase text-[#6d4c7d]">Strength</p>
-            <p className="mt-2 text-lg font-semibold text-[#17211d]">
+            <p className="text-xs font-bold uppercase text-[#005a9e]">Strength</p>
+            <p className="mt-2 text-lg font-semibold text-[#1f1f1f]">
               Research-led messaging that sounds human
             </p>
           </div>
@@ -230,13 +230,13 @@ export default function RukayatPortfolioPage() {
       <section id="work" className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="text-sm font-bold uppercase text-[#4f6f61]">
+            <p className="text-sm font-bold uppercase text-[#005a9e]">
               Selected work
             </p>
-            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#17211d]">
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#1f1f1f]">
               Copy systems for the places logistics deals actually happen.
             </h2>
-            <p className="mt-5 text-base leading-7 text-[#56645d]">
+            <p className="mt-5 text-base leading-7 text-[#424242]">
               Her work focuses on the moments where prospects decide whether a
               logistics provider sounds reliable enough to answer, request a
               quote, or book a call.
@@ -247,23 +247,23 @@ export default function RukayatPortfolioPage() {
             {PROJECTS.map((project) => (
               <article
                 key={project.title}
-                className="group grid gap-5 rounded-3xl border border-[#d8ded9] bg-white p-5 transition hover:-translate-y-1 hover:border-[#a9b9b0] hover:shadow-[0_24px_70px_-42px_rgba(23,33,29,0.78)] sm:grid-cols-[80px_1fr]"
+                className="group grid gap-5 rounded-3xl border border-[#dbeaf7] bg-white p-5 transition hover:-translate-y-1 hover:border-[#71afe5] hover:shadow-[0_24px_70px_-42px_rgba(0,69,120,0.62)] sm:grid-cols-[80px_1fr]"
               >
-                <span className="text-3xl font-semibold text-[#8a6a9a]">
+                <span className="text-3xl font-semibold text-[#0078d4]">
                   {project.label}
                 </span>
                 <div>
-                  <h3 className="text-2xl font-semibold text-[#17211d]">
+                  <h3 className="text-2xl font-semibold text-[#1f1f1f]">
                     {project.title}
                   </h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[#56645d]">
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[#424242]">
                     {project.desc}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-[#eef2ef] px-3 py-1 text-xs font-semibold text-[#53615a]"
+                        className="rounded-full bg-[#eff6fc] px-3 py-1 text-xs font-semibold text-[#005a9e]"
                       >
                         {tag}
                       </span>
@@ -276,17 +276,17 @@ export default function RukayatPortfolioPage() {
         </div>
       </section>
 
-      <section id="services" className="bg-[#17211d] text-white">
+      <section id="services" className="bg-[#004578] text-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1.2fr]">
           <div>
-            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#a7ccb8]">
+            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#cfe8ff]">
               <Target className="h-4 w-4" />
               What she writes
             </p>
             <h2 className="mt-4 text-4xl font-semibold leading-tight">
               Practical copy for teams that sell movement, speed, and trust.
             </h2>
-            <p className="mt-5 text-base leading-7 text-[#c8d3cd]">
+            <p className="mt-5 text-base leading-7 text-[#dbeaf7]">
               Rukayat brings together sales messaging, client psychology, and
               logistics research to make a company sound clear, reliable, and
               worth replying to.
@@ -295,10 +295,10 @@ export default function RukayatPortfolioPage() {
 
           <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">
             {SERVICES.map((service) => (
-              <div key={service.title} className="bg-[#1f2d28] p-6">
-                <ClipboardList className="h-6 w-6 text-[#a7ccb8]" />
+              <div key={service.title} className="bg-[#0f5f9d] p-6">
+                <ClipboardList className="h-6 w-6 text-[#cfe8ff]" />
                 <h3 className="mt-5 text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#c8d3cd]">
+                <p className="mt-3 text-sm leading-7 text-[#dbeaf7]">
                   {service.desc}
                 </p>
               </div>
@@ -309,7 +309,7 @@ export default function RukayatPortfolioPage() {
 
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#4f6f61]">
+          <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#005a9e]">
             <TrendingUp className="h-4 w-4" />
             Results she delivers
           </p>
@@ -317,25 +317,25 @@ export default function RukayatPortfolioPage() {
             {RESULTS.map((result) => (
               <div
                 key={result}
-                className="flex gap-4 rounded-2xl border border-[#d8ded9] bg-white p-5"
+                className="flex gap-4 rounded-2xl border border-[#dbeaf7] bg-white p-5"
               >
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#4f6f61]" />
-                <p className="text-sm leading-7 text-[#4b5a53]">{result}</p>
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#0078d4]" />
+                <p className="text-sm leading-7 text-[#424242]">{result}</p>
               </div>
             ))}
           </div>
         </div>
 
         <aside className="space-y-6">
-          <div className="rounded-[2rem] border border-[#d8ded9] bg-white p-7">
-            <p className="text-sm font-bold uppercase text-[#6d4c7d]">
+          <div className="rounded-[2rem] border border-[#dbeaf7] bg-white p-7">
+            <p className="text-sm font-bold uppercase text-[#005a9e]">
               Core skills
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {SKILLS.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-[#d8ded9] px-3 py-1.5 text-xs font-semibold text-[#4f5c55]"
+                  className="rounded-full border border-[#c7e0f4] px-3 py-1.5 text-xs font-semibold text-[#424242]"
                 >
                   {skill}
                 </span>
@@ -343,8 +343,8 @@ export default function RukayatPortfolioPage() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-[#d8ded9] bg-[#eef2ef] p-7">
-            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#4f6f61]">
+          <div className="rounded-[2rem] border border-[#c7e0f4] bg-[#eff6fc] p-7">
+            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#005a9e]">
               <Search className="h-4 w-4" />
               Research and outreach tools
             </p>
@@ -352,7 +352,7 @@ export default function RukayatPortfolioPage() {
               {TOOLS.map((tool) => (
                 <span
                   key={tool}
-                  className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#53615a]"
+                  className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#005a9e]"
                 >
                   {tool}
                 </span>
@@ -363,9 +363,9 @@ export default function RukayatPortfolioPage() {
       </section>
 
       <section id="contact" className="px-5 pb-8 sm:px-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#6d4c7d] px-6 py-10 text-white sm:px-10 lg:flex lg:items-center lg:justify-between">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#0078d4] px-6 py-10 text-white sm:px-10 lg:flex lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm font-bold uppercase text-[#eadff0]">Contact</p>
+            <p className="text-sm font-bold uppercase text-[#dbeaf7]">Contact</p>
             <h2 className="mt-3 max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
               Need logistics copy that sounds credible before the sales call?
             </h2>
@@ -373,7 +373,7 @@ export default function RukayatPortfolioPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0">
             <a
               href={`mailto:${CONTACT.email}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#17211d] transition hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#005a9e] transition hover:-translate-y-0.5"
             >
               <Mail className="h-4 w-4" />
               {CONTACT.email}

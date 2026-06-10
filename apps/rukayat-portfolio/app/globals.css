@@ -11,5 +11,5 @@ html {
 }
 
 body {
-  @apply bg-[#f6f7f4] font-sans text-[#17211d] antialiased;
+  @apply bg-[#f5f9ff] font-sans text-[#1f1f1f] antialiased;
 }
