@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   ArrowRight,
   CheckCircle2,
@@ -11,30 +10,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Oyewale Rukayat Omotunrayo | B2B Logistics Copywriter",
-  description:
-    "Portfolio for Oyewale Rukayat Omotunrayo, a B2B logistics copywriter helping freight, shipping, import, export, and delivery brands win better clients.",
-  icons: {
-    icon: [
-      {
-        url: "/portfolio/rukayat/favicon.png",
-        type: "image/png",
-        sizes: "192x192",
-      },
-    ],
-    apple: [
-      {
-        url: "/portfolio/rukayat/favicon.png",
-        type: "image/png",
-        sizes: "192x192",
-      },
-    ],
-    shortcut: "/portfolio/rukayat/favicon.png",
-  },
-};
-
-const PORTRAIT_SRC = "/portfolio/rukayat/rukayat-portrait.jpg";
+const PORTRAIT_SRC = "/rukayat-portrait.jpg";
 
 const CONTACT = {
   email: "oyewalerukayat6@gmail.com",
@@ -152,7 +128,10 @@ export default function RukayatPortfolioPage() {
         </a>
       </header>
 
-      <section id="top" className="mx-auto grid w-full max-w-7xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:pb-24 lg:pt-14">
+      <section
+        id="top"
+        className="mx-auto grid w-full max-w-7xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:pb-24 lg:pt-14"
+      >
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-[#cbd5cf] bg-white px-4 py-2 text-xs font-bold uppercase text-[#4f6f61]">
             <PenLine className="h-4 w-4" />
@@ -187,7 +166,10 @@ export default function RukayatPortfolioPage() {
 
           <div className="mt-12 grid gap-3 sm:grid-cols-3">
             {POSITIONING.map((item) => (
-              <div key={item} className="border-l border-[#bdccc4] pl-4 text-sm leading-6 text-[#526159]">
+              <div
+                key={item}
+                className="border-l border-[#bdccc4] pl-4 text-sm leading-6 text-[#526159]"
+              >
                 {item}
               </div>
             ))}
@@ -215,7 +197,9 @@ export default function RukayatPortfolioPage() {
           </div>
           <div className="absolute -right-3 top-8 rounded-2xl border border-[#d8ded9] bg-white px-5 py-4 shadow-[0_20px_60px_-35px_rgba(23,33,29,0.85)]">
             <p className="text-3xl font-semibold text-[#17211d]">3+</p>
-            <p className="text-xs font-medium uppercase text-[#6a776f]">Years writing</p>
+            <p className="text-xs font-medium uppercase text-[#6a776f]">
+              Years writing
+            </p>
           </div>
         </div>
       </section>
@@ -224,15 +208,21 @@ export default function RukayatPortfolioPage() {
         <div className="mx-auto grid max-w-7xl gap-6 px-5 py-8 sm:px-8 md:grid-cols-3">
           <div>
             <p className="text-xs font-bold uppercase text-[#6d4c7d]">Focus</p>
-            <p className="mt-2 text-lg font-semibold text-[#17211d]">B2B logistics growth copy</p>
+            <p className="mt-2 text-lg font-semibold text-[#17211d]">
+              B2B logistics growth copy
+            </p>
           </div>
           <div>
             <p className="text-xs font-bold uppercase text-[#6d4c7d]">Audience</p>
-            <p className="mt-2 text-lg font-semibold text-[#17211d]">Manufacturers, exporters, importers, builders</p>
+            <p className="mt-2 text-lg font-semibold text-[#17211d]">
+              Manufacturers, exporters, importers, builders
+            </p>
           </div>
           <div>
             <p className="text-xs font-bold uppercase text-[#6d4c7d]">Strength</p>
-            <p className="mt-2 text-lg font-semibold text-[#17211d]">Research-led messaging that sounds human</p>
+            <p className="mt-2 text-lg font-semibold text-[#17211d]">
+              Research-led messaging that sounds human
+            </p>
           </div>
         </div>
       </section>
@@ -240,7 +230,9 @@ export default function RukayatPortfolioPage() {
       <section id="work" className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="text-sm font-bold uppercase text-[#4f6f61]">Selected work</p>
+            <p className="text-sm font-bold uppercase text-[#4f6f61]">
+              Selected work
+            </p>
             <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#17211d]">
               Copy systems for the places logistics deals actually happen.
             </h2>
@@ -257,9 +249,13 @@ export default function RukayatPortfolioPage() {
                 key={project.title}
                 className="group grid gap-5 rounded-3xl border border-[#d8ded9] bg-white p-5 transition hover:-translate-y-1 hover:border-[#a9b9b0] hover:shadow-[0_24px_70px_-42px_rgba(23,33,29,0.78)] sm:grid-cols-[80px_1fr]"
               >
-                <span className="text-3xl font-semibold text-[#8a6a9a]">{project.label}</span>
+                <span className="text-3xl font-semibold text-[#8a6a9a]">
+                  {project.label}
+                </span>
                 <div>
-                  <h3 className="text-2xl font-semibold text-[#17211d]">{project.title}</h3>
+                  <h3 className="text-2xl font-semibold text-[#17211d]">
+                    {project.title}
+                  </h3>
                   <p className="mt-3 max-w-2xl text-sm leading-7 text-[#56645d]">
                     {project.desc}
                   </p>
@@ -302,7 +298,9 @@ export default function RukayatPortfolioPage() {
               <div key={service.title} className="bg-[#1f2d28] p-6">
                 <ClipboardList className="h-6 w-6 text-[#a7ccb8]" />
                 <h3 className="mt-5 text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#c8d3cd]">{service.desc}</p>
+                <p className="mt-3 text-sm leading-7 text-[#c8d3cd]">
+                  {service.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -317,7 +315,10 @@ export default function RukayatPortfolioPage() {
           </p>
           <div className="mt-6 space-y-4">
             {RESULTS.map((result) => (
-              <div key={result} className="flex gap-4 rounded-2xl border border-[#d8ded9] bg-white p-5">
+              <div
+                key={result}
+                className="flex gap-4 rounded-2xl border border-[#d8ded9] bg-white p-5"
+              >
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#4f6f61]" />
                 <p className="text-sm leading-7 text-[#4b5a53]">{result}</p>
               </div>
@@ -327,7 +328,9 @@ export default function RukayatPortfolioPage() {
 
         <aside className="space-y-6">
           <div className="rounded-[2rem] border border-[#d8ded9] bg-white p-7">
-            <p className="text-sm font-bold uppercase text-[#6d4c7d]">Core skills</p>
+            <p className="text-sm font-bold uppercase text-[#6d4c7d]">
+              Core skills
+            </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {SKILLS.map((skill) => (
                 <span

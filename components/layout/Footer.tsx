@@ -46,7 +46,6 @@ export function Footer() {
             <li><Link href="/about" className="transition hover:text-sky">About</Link></li>
             <li><Link href="/services" className="transition hover:text-sky">Services</Link></li>
             <li><Link href="/customs" className="transition hover:text-sky">Customs Service</Link></li>
-            <li><Link href="/portfolio/rukayat" className="transition hover:text-sky">Portfolio</Link></li>
           </ul>
         </div>
 
@@ -86,12 +85,6 @@ export function Footer() {
       <div className="border-t border-navy-800">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-navy-300 sm:flex-row">
           <p>© {new Date().getFullYear()} RUGAB Dynamic Logistics Company Ltd. All rights reserved.</p>
-          <p>
-            Copy &amp; messaging by{" "}
-            <Link href="/portfolio/rukayat" className="text-sky hover:underline">
-              Oyewale Rukayat
-            </Link>
-          </p>
         </div>
       </div>
     </footer>

@@ -5,9 +5,6 @@ Next.js (App Router). It is not just a static site — it ships a real, working 
 quote request → admin review → shipment → rider delivery → public tracking, designed to
 extend cleanly across three phases.
 
-It also includes a secondary portfolio page for **Oyewale Rukayat Omotunrayo**, a B2B
-logistics copywriter, at `/portfolio/rukayat`.
-
 > **Build status:** All three phases are implemented and verified (`npm run build` passes,
 > all routes render, auth + RBAC enforced, full quote→delivery lifecycle tested end-to-end
 > including state-machine gating, notifications/email/Paystack logic tested).
@@ -18,7 +15,6 @@ logistics copywriter, at `/portfolio/rukayat`.
 
 ### Phase 1 — ✅ Implemented
 - **Public website:** Home, About, Services, Customs Service, Quote, Contact, Track Shipment.
-- **Portfolio page** for Rukayat (`/portfolio/rukayat`).
 - **Quote request form** — Zod-validated, rate-limited, saved to DB, generates a unique tracking code.
 - **Contact form** — validated, rate-limited, saved to DB.
 - **Public tracking** — look up a quote/shipment by tracking code; shows only safe public fields + status timeline.
@@ -66,7 +62,7 @@ logistics copywriter, at `/portfolio/rukayat`.
 ## Folder Structure
 ```
 app/
-  (public)/          # public website (home, about, services, quote, customs, contact, track, portfolio)
+  (public)/          # public website (home, about, services, quote, customs, contact, track)
   (auth)/            # login, register
   dashboard/         # admin / customer / rider dashboards (role-guarded)
   actions/           # server actions: quote, contact, auth, track, session
