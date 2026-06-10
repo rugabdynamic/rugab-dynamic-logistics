@@ -83,16 +83,16 @@ const SKILLS = [
 ];
 
 const TOOLS = [
-  "Mailchimp",
-  "HubSpot",
-  "Outlook",
-  "Gmail",
-  "ZoomInfo",
-  "Apollo.io",
-  "ImportGenius",
-  "LinkedIn Sales Navigator",
-  "Yellow Pages",
-  "Snov.io",
+  { name: "Mailchimp", domain: "mailchimp.com" },
+  { name: "HubSpot", domain: "hubspot.com" },
+  { name: "Outlook", domain: "outlook.com" },
+  { name: "Gmail", domain: "gmail.com" },
+  { name: "ZoomInfo", domain: "zoominfo.com" },
+  { name: "Apollo.io", domain: "apollo.io" },
+  { name: "ImportGenius", domain: "importgenius.com" },
+  { name: "LinkedIn Sales Navigator", domain: "linkedin.com" },
+  { name: "Yellow Pages", domain: "yellowpages.com" },
+  { name: "Snov.io", domain: "snov.io" },
 ];
 
 export default function RukayatPortfolioPage() {
@@ -114,6 +114,9 @@ export default function RukayatPortfolioPage() {
           </a>
           <a href="#services" className="transition hover:text-[#0078d4]">
             Services
+          </a>
+          <a href="#tools" className="transition hover:text-[#0078d4]">
+            Tools
           </a>
           <a href="#contact" className="transition hover:text-[#0078d4]">
             Contact
@@ -326,7 +329,7 @@ export default function RukayatPortfolioPage() {
           </div>
         </div>
 
-        <aside className="space-y-6">
+        <aside>
           <div className="rounded-[2rem] border border-[#dbeaf7] bg-white p-7">
             <p className="text-sm font-bold uppercase text-[#005a9e]">
               Core skills
@@ -342,24 +345,40 @@ export default function RukayatPortfolioPage() {
               ))}
             </div>
           </div>
+        </aside>
+      </section>
 
-          <div className="rounded-[2rem] border border-[#c7e0f4] bg-[#eff6fc] p-7">
+      <section id="tools" className="bg-white px-5 py-20 sm:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
             <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#005a9e]">
               <Search className="h-4 w-4" />
               Research and outreach tools
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {TOOLS.map((tool) => (
-                <span
-                  key={tool}
-                  className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-[#005a9e]"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-[#1f1f1f]">
+              Tools she uses to research prospects, write sharper messages, and manage outreach.
+            </h2>
           </div>
-        </aside>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {TOOLS.map((tool) => (
+              <div
+                key={tool.name}
+                className="flex min-h-16 items-center gap-3 rounded-2xl border border-[#dbeaf7] bg-[#f5f9ff] px-4 py-3 text-sm font-semibold text-[#005a9e] shadow-sm transition hover:-translate-y-0.5 hover:border-[#71afe5] hover:bg-[#eff6fc]"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${tool.domain}&sz=64`}
+                    alt=""
+                    className="h-5 w-5"
+                    loading="lazy"
+                  />
+                </span>
+                <span>{tool.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section id="contact" className="px-5 pb-8 sm:px-8">
