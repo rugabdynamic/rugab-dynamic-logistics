@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "prisma:schema": "node scripts/generate-prisma-schema.mjs",
+    "prisma:generate": "npm run prisma:schema && prisma generate --schema prisma/schema.generated.prisma",
+    "build": "npm run prisma:generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "db:push": "prisma db push",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "db:push": "npm run prisma:schema && prisma db push --schema prisma/schema.generated.prisma",
+    "db:seed": "npm run prisma:generate && tsx prisma/seed.ts",
+    "db:seed:admin": "npm run prisma:generate && tsx prisma/seed-admin.ts",
+    "db:studio": "npm run prisma:schema && prisma studio --schema prisma/schema.generated.prisma",
+    "postinstall": "npm run prisma:generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

@@ -8,9 +8,16 @@ import { authenticate } from "@/app/actions/auth";
 
 export function LoginForm() {
   const params = useSearchParams();
+  const authError = params.get("error");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(
-    params.get("error") === "unauthorized" ? "You don't have access to that page." : null
+    authError === "unauthorized"
+      ? "You don't have access to that page."
+      : authError === "CredentialsSignin"
+        ? "Invalid email or password."
+        : authError
+          ? "Sign in is temporarily unavailable. Please try again shortly."
+          : null
   );
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

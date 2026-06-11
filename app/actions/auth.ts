@@ -30,6 +30,13 @@ export async function authenticate(formData: FormData): Promise<ActionResult> {
     return { ok: true, message: "Signed in." };
   } catch (error) {
     if (error instanceof AuthError) {
+      if (error.type !== "CredentialsSignin") {
+        console.error("authenticate auth error:", error);
+        return {
+          ok: false,
+          message: "Sign in is temporarily unavailable. Please try again shortly.",
+        };
+      }
       return { ok: false, message: "Invalid email or password." };
     }
     throw error; // re-throw redirect

@@ -95,8 +95,13 @@ openssl rand -base64 32
 
 ### 3. Database (create + seed)
 ```bash
-npx prisma db push     # create the SQLite schema
+npm run db:push        # create/update the schema
 npm run db:seed        # load demo accounts + sample data
+```
+
+To create only an admin account without demo data:
+```bash
+ADMIN_EMAIL="admin@rugab.com" ADMIN_PASSWORD="change-this-password" npm run db:seed:admin
 ```
 
 ### 4. Run
@@ -166,9 +171,23 @@ with `REJECTED`, `FAILED`, and `CANCELLED` allowed from their valid source state
 ---
 
 ## Switching to PostgreSQL (production)
-1. In `prisma/schema.prisma`, change the datasource `provider` from `"sqlite"` to `"postgresql"`.
-2. Set `DATABASE_URL` to your Postgres connection string.
-3. Run `npx prisma migrate dev` (or `prisma db push`) and `npm run db:seed`.
+Set `DATABASE_URL` to your Postgres connection string. The npm scripts generate an ignored
+Prisma schema at `prisma/schema.generated.prisma` with the correct datasource provider:
+`file:` URLs use SQLite locally, and `postgresql://` / `postgres://` URLs use PostgreSQL
+for production.
+
+After setting the production `DATABASE_URL`, run the schema push against that database:
+```bash
+npm run db:push
+```
+
+To create only the production admin user, run:
+```bash
+DATABASE_URL="your-production-postgres-url" ADMIN_EMAIL="admin@rugab.com" ADMIN_PASSWORD="use-a-strong-password" npm run db:seed:admin
+```
+
+Do not use `npm run db:seed` for production unless you explicitly want demo data; it clears
+and recreates sample records.
 
 The models are written to be portable (string-typed enums, no DB-native enum types), so no
 model changes are required.
@@ -177,7 +196,12 @@ model changes are required.
 
 ## Deployment Notes
 - Deploy on any Node host or Vercel. Provide a managed Postgres (Neon, Supabase, RDS) and set
-  `DATABASE_URL`, `AUTH_SECRET`, `AUTH_URL`, `NEXT_PUBLIC_APP_URL`, `ADMIN_EMAIL`.
+  `DATABASE_URL`, `AUTH_SECRET`, `AUTH_URL`, `AUTH_TRUST_HOST`, `NEXT_PUBLIC_APP_URL`,
+  `ADMIN_EMAIL`.
+- On Vercel, `AUTH_URL` and `NEXT_PUBLIC_APP_URL` should be the full production origin,
+  for example `https://your-domain.com`, and `AUTH_TRUST_HOST` should be `true`.
+- Seed an admin with `npm run db:seed:admin` before logging into a fresh production database;
+  an empty production database has no users to authenticate.
 - For multi-instance deployments, replace the in-memory rate limiter (`lib/rate-limit.ts`) with
   Redis/Upstash — the call sites stay the same.
 

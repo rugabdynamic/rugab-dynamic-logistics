@@ -3,6 +3,7 @@ import type { NextAuthConfig } from "next-auth";
 // Edge-safe config (no Prisma / bcrypt here) so it can be imported by middleware.
 // The Credentials provider with its DB lookup lives in auth.ts.
 export const authConfig: NextAuthConfig = {
+  trustHost: true,
   pages: {
     signIn: "/login",
   },
