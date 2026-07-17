@@ -33,24 +33,33 @@ const SERVICES = [
     label: "Outreach",
     title: "Cold Email Outreach",
     desc: "Research-backed campaigns for manufacturers, exporters, importers, and construction buyers.",
+    image: "/1.jpeg",
+    imageAlt: "Outlook campaign email written for an export shipment prospect",
   },
   {
     icon: GitBranch,
     label: "Sequence",
     title: "Email Sequences",
     desc: "Multi-touch nurture, follow-up, and reactivation sequences written around the buying journey.",
+    image: "/2.jpeg",
+    imageAlt: "Outlook email sequence for local and international shipping prospects",
   },
   {
     icon: PanelTop,
     label: "Website",
     title: "Website Copy",
     desc: "Sharper service pages, homepage messaging, and conversion-focused copy for logistics brands.",
+    image: "/3.jpeg",
+    imageAlt: "Outlook follow-up message for a logistics shipment offer",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     title: "LinkedIn Content",
     desc: "Authority-led posts and profile copy for founders, sales teams, and logistics operators.",
+    image: "/linkedin-content.png",
+    imageAlt:
+      "Business networking content dashboard with logistics posts and analytics",
   },
 ];
 
@@ -300,8 +309,8 @@ export default function RukayatPortfolioPage() {
       </section>
 
       <section id="services" className="bg-[#004578] text-white">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1.2fr]">
-          <div>
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
+          <div className="max-w-3xl">
             <p className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#cfe8ff]">
               <Target className="h-4 w-4" />
               What she writes
@@ -316,31 +325,40 @@ export default function RukayatPortfolioPage() {
             </p>
           </div>
 
-          <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">
+          <div className="mt-16 space-y-16">
             {SERVICES.map((service, index) => {
               const ServiceIcon = service.icon;
 
               return (
-                <div
+                <article
                   key={service.title}
-                  className="relative min-h-[260px] overflow-hidden bg-[#0f5f9d] p-6"
+                  className="border-t border-white/15 pt-10 first:border-t-0 first:pt-0"
                 >
-                  <span className="pointer-events-none absolute -right-4 -top-8 text-[7rem] font-semibold leading-none text-white/5">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="relative flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#0078d4] shadow-[0_18px_45px_-28px_rgba(0,0,0,0.65)]">
-                      <ServiceIcon className="h-6 w-6" />
-                    </span>
-                    <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold text-[#dbeaf7]">
-                      {service.label}
-                    </span>
+                  <div className="mx-auto max-w-3xl text-center">
+                    <div className="flex items-center justify-center gap-3">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#0078d4] shadow-[0_18px_45px_-28px_rgba(0,0,0,0.65)]">
+                        <ServiceIcon className="h-6 w-6" />
+                      </span>
+                      <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase text-[#dbeaf7]">
+                        {String(index + 1).padStart(2, "0")} / {service.label}
+                      </span>
+                    </div>
+                    <h3 className="mt-6 text-3xl font-semibold leading-tight sm:text-4xl">
+                      {service.title}
+                    </h3>
+                    <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[#dbeaf7]">
+                      {service.desc}
+                    </p>
                   </div>
-                  <h3 className="mt-5 text-xl font-semibold">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[#dbeaf7]">
-                    {service.desc}
-                  </p>
-                </div>
+                  <div className="relative mt-8 aspect-[2/1] overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 shadow-[0_28px_80px_-45px_rgba(0,0,0,0.95)]">
+                    <img
+                      src={service.image}
+                      alt={service.imageAlt}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </article>
               );
             })}
           </div>
